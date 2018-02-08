@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // As informações gerais sobre um assembly são controladas por
 // conjunto de atributos. Altere estes valores de atributo para modificar as informações
 // associada a um assembly.
-[assembly: AssemblyTitle("WPF.Tools")]
+[assembly: AssemblyTitle("WPF.Tools.Xaml")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("WPF.Tools")]
+[assembly: AssemblyProduct("WPF.Tools.Xaml")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // O GUID a seguir será destinado à ID de typelib se este projeto for exposto para COM
-[assembly: Guid("c4936e92-7672-47bc-b259-4d5cb8ffc794")]
+[assembly: Guid("086c8fd9-5b8e-430b-98bd-007b715ce8ad")]
 
 // As informações da versão de um assembly consistem nos quatro valores a seguir:
 //

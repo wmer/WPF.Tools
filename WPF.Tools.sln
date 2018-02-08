@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27323.2
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF.Tools", "WPF.Tools\WPF.Tools.csproj", "{C4936E92-7672-47BC-B259-4D5CB8FFC794}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF.Tools.Xaml", "WPF.Tools.Xaml\WPF.Tools.Xaml.csproj", "{086C8FD9-5B8E-430B-98BD-007B715CE8AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF.Tools.Navigation", "WPF.Tools.Navigation\WPF.Tools.Navigation.csproj", "{65D311B6-297C-4AD0-88DC-FA2E9D551BA4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reflection.Optimization", "..\..\NetStandard\Reflection.Optimization\Reflection.Optimization\Reflection.Optimization.csproj", "{C5474132-E9B6-4738-A229-C9A5D1B243D4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DependencyInjectionResolver", "..\..\NetStandard\DependencyInjectionResolver\DependencyInjectionResolver\DependencyInjectionResolver.csproj", "{C6F1CEF8-E96C-42C5-A1A4-7197E129C5F5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +17,22 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C4936E92-7672-47BC-B259-4D5CB8FFC794}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C4936E92-7672-47BC-B259-4D5CB8FFC794}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C4936E92-7672-47BC-B259-4D5CB8FFC794}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C4936E92-7672-47BC-B259-4D5CB8FFC794}.Release|Any CPU.Build.0 = Release|Any CPU
+		{086C8FD9-5B8E-430B-98BD-007B715CE8AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{086C8FD9-5B8E-430B-98BD-007B715CE8AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{086C8FD9-5B8E-430B-98BD-007B715CE8AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{086C8FD9-5B8E-430B-98BD-007B715CE8AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65D311B6-297C-4AD0-88DC-FA2E9D551BA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65D311B6-297C-4AD0-88DC-FA2E9D551BA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65D311B6-297C-4AD0-88DC-FA2E9D551BA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65D311B6-297C-4AD0-88DC-FA2E9D551BA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5474132-E9B6-4738-A229-C9A5D1B243D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5474132-E9B6-4738-A229-C9A5D1B243D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5474132-E9B6-4738-A229-C9A5D1B243D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5474132-E9B6-4738-A229-C9A5D1B243D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6F1CEF8-E96C-42C5-A1A4-7197E129C5F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6F1CEF8-E96C-42C5-A1A4-7197E129C5F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6F1CEF8-E96C-42C5-A1A4-7197E129C5F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6F1CEF8-E96C-42C5-A1A4-7197E129C5F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
