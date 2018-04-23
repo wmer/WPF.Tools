@@ -38,7 +38,7 @@ namespace WPF.Tools.Navigation {
                     _previousPage = pg;
                     _previousExtraContent = _extraContent;
                 }
-                page = _dependencyInjection.Resolve<T>();
+                page = _dependencyInjection.Resolve<T>(InstanceOptions.DiferentInstances);
                 NavigationEventHub.OnNavigating(_previousPage, new NavigationEventArgs(pageTitle, page, extra));
                 _actualPage = page;
                 GetRootFrame().Content = page;
