@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Commands\CommandBase.cs" />
     <Compile Include="Commands\DelegateCommand.cs" />
+    <Compile Include="Commands\EventToCommand.cs" />
     <Compile Include="Commands\RoutedEventTrigger.cs" />
     <Compile Include="Navigation\Events\NavigationEventArgs.cs" />
     <Compile Include="Navigation\Events\NavigationEventHub.cs" />

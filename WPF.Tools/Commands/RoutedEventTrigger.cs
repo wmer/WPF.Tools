@@ -33,6 +33,7 @@ namespace WPF.Tools.Commands {
             }
         }
         void OnRoutedEvent(object sender, RoutedEventArgs args) {
+
             base.OnEvent(args);
         }
         protected override string GetEventName() {
