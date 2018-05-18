@@ -17,9 +17,13 @@ namespace WPF.Tools.Commands {
             get { return _command; }
         }
 
-        public virtual bool CanExecute(object parameter) => true;
+        public bool CanExecute(object parameter) => CanExecute(parameter as T);
 
-        public abstract void Execute(object parameter);
+        public void Execute(object parameter) => Execute(parameter as T);
+
+        public virtual bool CanExecute(T parameter) => parameter is T;
+
+        public abstract void Execute(T parameter);
 
         public void RaiseCanExecuteChanged() =>
                             Command.RaiseCanExecuteChanged();
