@@ -9,7 +9,7 @@ using System.Windows.Media;
 
 namespace WPF.Tools.Xaml {
     public static class ControlsHelper {
-        public static T Find<T>(string name) where T : UIElement {
+        public static T Find<T>(string name) where T : DependencyObject {
             T element = null;
             if (FindInMainPage<T>(name) is T elW) {
                 element = elW;
@@ -17,7 +17,7 @@ namespace WPF.Tools.Xaml {
                 element = elP;
             } else if (FindChildControl<T>(GetCurrentPage(), name) is T elC) {
                 element = elC;
-            } else if (FindChildControl<T>(GetMainPage(), name) is T elCM) {
+            } else if (FindChildControl<T>(GetCurrentWindow(), name) is T elCM) {
                 element = elCM;
             }
 
@@ -27,7 +27,7 @@ namespace WPF.Tools.Xaml {
         public static T FindResource<T>(string key) {
             T resource = default(T);
             try {
-                if (GetMainPage().Resources[key] is T rs) {
+                if (GetCurrentWindow().Resources[key] is T rs) {
                     resource = rs;
                 } else if (GetCurrentPage() is Page page) {
                     resource = (T)page.Resources[key];
@@ -75,13 +75,13 @@ namespace WPF.Tools.Xaml {
             return list;
         }
 
-        private static T FindInMainPage<T>(string name) where T : UIElement {
+        private static T FindInMainPage<T>(string name) where T : DependencyObject {
             T element = null;
-            element = GetMainPage().FindName(name) as T;
+            element = GetCurrentWindow().FindName(name) as T;
             return element;
         }
 
-        private static T FindInCurrentPage<T>(string name) where T : UIElement {
+        private static T FindInCurrentPage<T>(string name) where T : DependencyObject {
             T element = null;
             if (GetCurrentPage() is Page page) {
                 element = page.FindName(name) as T;
@@ -89,12 +89,12 @@ namespace WPF.Tools.Xaml {
             return element;
         }
 
-        private static Window GetMainPage() {
+        public static Window GetCurrentWindow() {
             return Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
         }
 
         public static Page GetCurrentPage() {
-            if (GetMainPage().Find<Page>().FirstOrDefault() is Page page) {
+            if (GetCurrentWindow().Find<Page>().FirstOrDefault() is Page page) {
                 return page;
             }
             return null;

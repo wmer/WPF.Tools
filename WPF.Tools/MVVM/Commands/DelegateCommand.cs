@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace WPF.Tools.Commands {
+namespace WPF.Tools.MVVM.Commands {
     public class DelegateCommand<T> : ICommand where T : class {
         private readonly Predicate<T> _canExecute;
         private readonly Action<T> _execute;

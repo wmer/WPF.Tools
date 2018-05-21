@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Interactivity;
 
-namespace WPF.Tools.Commands {
+namespace WPF.Tools.MVVM.Commands {
     public class EventToCommand : TriggerAction<DependencyObject> {
         public static readonly DependencyProperty CommandParameterProperty =
             DependencyProperty.Register("CommandParameter", typeof(object), typeof(EventToCommand), null);

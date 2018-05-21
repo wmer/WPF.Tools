@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace WPF.Tools.Commands {
+namespace WPF.Tools.MVVM.Commands {
     public abstract class CommandBase<T> where T : class {
         private DelegateCommand<T> _command;
 

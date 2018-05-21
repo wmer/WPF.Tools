@@ -30,7 +30,7 @@ namespace WPF.Tools.Navigation {
 
         public void Navigate<T>(string pageTitle) where T : Page => Navigate<T>(pageTitle, null);
 
-        public void Navigate<T>(string pageTitle, object extra) where T : Page {
+        public void Navigate<T>(string pageTitle, params object[] extra) where T : Page {
             var page = default(T);
             try {
                 if (GetRootFrame().Content != null && GetRootFrame().Content is Page pg) {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Interactivity;
 
-namespace WPF.Tools.Commands {
+namespace WPF.Tools.MVVM.Commands {
     public class RoutedEventTrigger : EventTriggerBase<DependencyObject> {
         RoutedEvent _routedEvent;
 

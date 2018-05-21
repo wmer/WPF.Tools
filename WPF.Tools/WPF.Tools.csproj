@@ -51,10 +51,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\CommandBase.cs" />
-    <Compile Include="Commands\DelegateCommand.cs" />
-    <Compile Include="Commands\EventToCommand.cs" />
-    <Compile Include="Commands\RoutedEventTrigger.cs" />
+    <Compile Include="MVVM\Commands\CommandBase.cs" />
+    <Compile Include="MVVM\Commands\DelegateCommand.cs" />
+    <Compile Include="MVVM\Commands\EventToCommand.cs" />
+    <Compile Include="MVVM\Commands\RoutedEventTrigger.cs" />
+    <Compile Include="MVVM\ViewModel\ViewModelBase.cs" />
     <Compile Include="Navigation\Events\NavigationEventArgs.cs" />
     <Compile Include="Navigation\Events\NavigationEventHub.cs" />
     <Compile Include="Navigation\Events\NavigationFailedEventArgs.cs" />
