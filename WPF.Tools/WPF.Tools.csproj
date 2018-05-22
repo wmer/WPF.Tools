@@ -31,8 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DependencyInjectionResolver, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DependencyInjectionResolver.1.0.1\lib\netstandard2.0\DependencyInjectionResolver.dll</HintPath>
+    <Reference Include="DependencyInjectionResolver, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DependencyInjectionResolver.1.0.2\lib\netstandard2.0\DependencyInjectionResolver.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -55,6 +55,7 @@
     <Compile Include="MVVM\Commands\DelegateCommand.cs" />
     <Compile Include="MVVM\Commands\EventToCommand.cs" />
     <Compile Include="MVVM\Commands\RoutedEventTrigger.cs" />
+    <Compile Include="MVVM\Extra\ResourceDictionary.cs" />
     <Compile Include="MVVM\ViewModel\ViewModelBase.cs" />
     <Compile Include="Navigation\Events\NavigationEventArgs.cs" />
     <Compile Include="Navigation\Events\NavigationEventHub.cs" />
