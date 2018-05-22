@@ -49,7 +49,7 @@ namespace WPF.Tools.MVVM.Extra {
         protected override void OnGettingValue(object key, ref object value, out bool canCache) {
             try {
                 base.OnGettingValue(key, ref value, out canCache);
-            } catch {
+            } catch(Exception e) {
                 value = _injection.Resolve(_registredViewModel[$"{key}"], InstanceOptions.DiferentInstances);
                 canCache = true;
             }
