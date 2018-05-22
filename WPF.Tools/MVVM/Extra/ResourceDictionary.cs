@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Markup;
 
 namespace WPF.Tools.MVVM.Extra {
     public abstract class ResourceDictionary : System.Windows.ResourceDictionary {
@@ -49,10 +50,16 @@ namespace WPF.Tools.MVVM.Extra {
         protected override void OnGettingValue(object key, ref object value, out bool canCache) {
             try {
                 base.OnGettingValue(key, ref value, out canCache);
-            } catch(Exception e) {
-                value = _injection.Resolve(_registredViewModel[$"{key}"], InstanceOptions.DiferentInstances);
-                canCache = true;
+            } catch (XamlParseException ex) {
+                GetValue($"{key}", ref value, out canCache);
+            } catch (Exception e) {
+                GetValue($"{key}", ref value, out canCache);
             }
+        }
+
+        private void GetValue(string key, ref object value, out bool canCache) {
+            value = _injection.Resolve(_registredViewModel[key], InstanceOptions.DiferentInstances);
+            canCache = true;
         }
     }
 }
