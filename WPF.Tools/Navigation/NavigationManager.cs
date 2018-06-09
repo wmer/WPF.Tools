@@ -16,9 +16,9 @@ namespace WPF.Tools.Navigation {
         private static Page _previousPage;
         private static Page _actualPage;
         private static Page _nextPage;
-        private static object _previousExtraContent;
-        private static object _extraContent;
-        private static object _nextExtraContent;
+        private static object[] _previousExtraContent;
+        private static object[] _extraContent;
+        private static object[] _nextExtraContent;
         private static string _previousPageTitle;
         private static string _pageTitle;
         private static string _nextPageTitle;
@@ -76,15 +76,10 @@ namespace WPF.Tools.Navigation {
         }
 
         private static Frame GetRootFrame() {
-            if (GetMainPage().Find<Frame>().FirstOrDefault() is Frame rootFrame) {
-                return rootFrame;
-            }
-            return null;
+            return GetMainWindow().Find<Frame>().FirstOrDefault() is Frame rootFrame ? rootFrame : null;
         }
 
-        private static Window GetMainPage() {
-            return Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
-        }
+        private static Window GetMainWindow() => Application.Current.MainWindow;
 
         private void Page_Loaded(object sender, RoutedEventArgs e) {
             NavigationEventHub.OnNavigated(_actualPage, new NavigationEventArgs(_pageTitle, _previousPage, _actualPage, _extraContent));
