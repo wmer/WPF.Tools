@@ -34,7 +34,7 @@ namespace WPF.Tools.Navigation {
             var page = default(T);
             try {
                 if (GetRootFrame().Content != null && GetRootFrame().Content is Page pg) {
-                    _previousPageTitle = pageTitle;
+                    _previousPageTitle = _pageTitle;
                     _previousPage = pg;
                     _previousExtraContent = _extraContent;
                 }
