@@ -69,20 +69,18 @@ namespace WPF.Tools.Navigation {
                     _previousExtraContent = null;
                     mainFrame.Content = _actualPage;
                     navigated = true;
-                    NavigationEventHub.OnNavigated(_previousPage, new NavigationEventArgs(_pageTitle, _nextPage, _actualPage, _extraContent));
+                    NavigationEventHub.OnNavigated(_actualPage, new NavigationEventArgs(_pageTitle, _nextPage, _actualPage, _extraContent));
                 }
             }
             return navigated;
         }
 
-        private static Frame GetRootFrame() {
-            return GetMainWindow().Find<Frame>().FirstOrDefault() is Frame rootFrame ? rootFrame : null;
-        }
+        private static Frame GetRootFrame() => 
+                        GetMainWindow().Find<Frame>().FirstOrDefault() is Frame rootFrame ? rootFrame : null;
 
         private static Window GetMainWindow() => Application.Current.MainWindow;
 
-        private void Page_Loaded(object sender, RoutedEventArgs e) {
-            NavigationEventHub.OnNavigated(_actualPage, new NavigationEventArgs(_pageTitle, _previousPage, _actualPage, _extraContent));
-        }
+        private void Page_Loaded(object sender, RoutedEventArgs e) =>
+                 NavigationEventHub.OnNavigated(_actualPage, new NavigationEventArgs(_pageTitle, _previousPage, _actualPage, _extraContent));
     }
 }
