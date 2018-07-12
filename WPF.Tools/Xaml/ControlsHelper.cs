@@ -90,7 +90,11 @@ namespace WPF.Tools.Xaml {
         }
 
         public static Window GetCurrentWindow() {
-            return Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
+            var window = Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
+            if(window == null) {
+                window = Application.Current.MainWindow;
+            }
+            return window;
         }
 
         public static Page GetCurrentPage() {
