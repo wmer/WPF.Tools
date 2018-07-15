@@ -23,14 +23,27 @@ namespace WPF.Tools.MVVM.Commands {
         }
 
         public bool CanExecute(object parameter) {
-            if (_canExecute == null)
-                return true;
-
-            return _canExecute((T)parameter);
+            return _canExecute == null ? true : _canExecute((T)parameter);
         }
 
         public void Execute(object parameter) =>
                             _execute((T)parameter);
+
+        public void RaiseCanExecuteChanged() =>
+                        CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+    }
+
+    public class DelegateCommand : ICommand {
+        public event EventHandler CanExecuteChanged;
+        private readonly Action _execute;
+
+        public DelegateCommand(Action execute) {
+            _execute = execute;
+        }
+
+        public bool CanExecute(object parameter) => true;
+
+        public void Execute(object parameter) => _execute();
 
         public void RaiseCanExecuteChanged() =>
                         CanExecuteChanged?.Invoke(this, EventArgs.Empty);
