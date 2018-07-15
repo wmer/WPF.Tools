@@ -11,7 +11,7 @@ namespace WPF.Tools.MVVM.Commands {
         RoutedEvent _routedEvent;
 
         public RoutedEvent RoutedEvent {
-            get { return _routedEvent; }
+            get => _routedEvent;
             set { _routedEvent = value; }
         }
 
@@ -19,10 +19,9 @@ namespace WPF.Tools.MVVM.Commands {
         }
 
         protected override void OnAttached() {
-            Behavior behavior = base.AssociatedObject as Behavior;
             FrameworkElement associatedElement = base.AssociatedObject as FrameworkElement;
 
-            if (behavior != null) {
+            if (base.AssociatedObject is Behavior behavior) {
                 associatedElement = ((IAttachedObject)behavior).AssociatedObject as FrameworkElement;
             }
             if (associatedElement == null) {
@@ -32,12 +31,9 @@ namespace WPF.Tools.MVVM.Commands {
                 associatedElement.AddHandler(RoutedEvent, new RoutedEventHandler(this.OnRoutedEvent));
             }
         }
-        void OnRoutedEvent(object sender, RoutedEventArgs args) {
 
-            base.OnEvent(args);
-        }
-        protected override string GetEventName() {
-            return RoutedEvent.Name;
-        }
+        void OnRoutedEvent(object sender, RoutedEventArgs args) => base.OnEvent(args);
+
+        protected override string GetEventName() => RoutedEvent.Name;
     }
 }

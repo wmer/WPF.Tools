@@ -9,8 +9,8 @@ using System.Windows.Interactivity;
 
 namespace WPF.Tools.MVVM.Commands {
     public class EventToCommand : TriggerAction<DependencyObject> {
-        public static readonly DependencyProperty CommandParameterProperty =
-            DependencyProperty.Register("CommandParameter", typeof(object), typeof(EventToCommand), null);
+        public static readonly DependencyProperty CommandParameterProperty = DependencyProperty.Register(
+            "CommandParameter", typeof(object), typeof(EventToCommand), null);
 
         public static readonly DependencyProperty CommandProperty = DependencyProperty.Register(
             "Command", typeof(ICommand), typeof(EventToCommand), new UIPropertyMetadata(null));
@@ -21,9 +21,7 @@ namespace WPF.Tools.MVVM.Commands {
         private string commandName;
 
         public object EventArgs {
-            get {
-                return this.GetValue(InvokeParameterProperty);
-            }
+            get => GetValue(InvokeParameterProperty);
             set {
                 this.SetValue(InvokeParameterProperty, value);
             }
@@ -31,18 +29,14 @@ namespace WPF.Tools.MVVM.Commands {
 
 
         public ICommand Command {
-            get {
-                return (ICommand)this.GetValue(CommandProperty);
-            }
+            get => (ICommand)this.GetValue(CommandProperty);
             set {
                 this.SetValue(CommandProperty, value);
             }
         }
 
         public string CommandName {
-            get {
-                return this.commandName;
-            }
+            get => commandName;
             set {
                 if (this.CommandName != value) {
                     this.commandName = value;
@@ -51,10 +45,7 @@ namespace WPF.Tools.MVVM.Commands {
         }
 
         public object CommandParameter {
-            get {
-                return this.GetValue(CommandParameterProperty);
-            }
-
+            get => GetValue(CommandParameterProperty);
             set {
                 this.SetValue(CommandParameterProperty, value);
             }
