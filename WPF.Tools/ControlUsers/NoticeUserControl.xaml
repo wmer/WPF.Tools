@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="WPF.Tools.ControlUsers.NoticeUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPF.Tools.ControlUsers"
+             xmlns:viewmodels="clr-namespace:WPF.Tools.ControlUsers.ViewModels"
+             mc:Ignorable="d" >
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+        <viewmodels:NoticeViewModel x:Key="Notification"/>
+    </UserControl.Resources>
+
+    <Grid     
+        Visibility="{Binding Visibility, Source={StaticResource Notification}, Converter={StaticResource BoolToVis}}"
+        HorizontalAlignment="Center" 
+        VerticalAlignment="Center"
+        Width="600" 
+        Height="225" 
+        Background="#B2000000" >
+        <Grid.Effect>
+            <DropShadowEffect />
+        </Grid.Effect>
+        <TextBox 
+            IsReadOnly="True"  
+            Text="Aguarde..." 
+            FontSize="130" 
+            Background="{x:Null}" 
+            Foreground="White" 
+            BorderBrush="{x:Null}"/>
+        <TextBox 
+            IsReadOnly="True"  
+            Text="{Binding Message, Source={StaticResource Notification}}" 
+            FontSize="20" 
+            Background="{x:Null}" 
+            Foreground="White" 
+            VerticalAlignment="Bottom" 
+            VerticalContentAlignment="Bottom" 
+            BorderBrush="{x:Null}"/>
+        <ProgressBar
+            x:Name="ContatProgressBar"
+            VerticalAlignment="Bottom" 
+            Height="5"
+            Minimum="0"
+            Maximum="{Binding Total, Source={StaticResource Notification}}"
+            Value="{Binding ActualValue, Source={StaticResource Notification}}"/>
+    </Grid>
+</UserControl>
