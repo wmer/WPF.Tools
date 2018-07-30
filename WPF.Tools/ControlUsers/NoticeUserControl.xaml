@@ -34,6 +34,7 @@
             FontSize="20" 
             Background="{x:Null}" 
             Foreground="White" 
+            Margin="0,0,0,10"
             VerticalAlignment="Bottom" 
             VerticalContentAlignment="Bottom" 
             BorderBrush="{x:Null}"/>
