@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WPF.Tools.ControlUsers.Models;
 using WPF.Tools.ControlUsers.ViewModels;
+using WPF.Tools.Events;
 using WPF.Tools.Xaml;
 
 namespace WPF.Tools.ControlUsers {
@@ -24,26 +25,15 @@ namespace WPF.Tools.ControlUsers {
         public NavigationUserControl() {
             InitializeComponent();
             this.Loaded += NavigationUserControl_Loaded;
+            WpfToolsEventHub.CreateFrame += OnCreateFrame;
         }
 
         private void NavigationUserControl_Loaded(object sender, RoutedEventArgs e) {
             AddNavigationButton(null, "\uf0c9", "Menu");
         }
 
-
-        public static readonly DependencyProperty RootFrameProperty =
-           DependencyProperty.Register("RootFrame", typeof(Frame), typeof(NavigationUserControl), null);
-
-        public Frame RootFrame {
-            get => (Frame)GetValue(ContentProperty);
-            set {
-                SetValue(ContentProperty, value);
-                AddFrame(value);
-            }
-        }
-
-        private void AddFrame(Frame frame) {
-            Content.Children.Add(frame);
+        private void OnCreateFrame(object sender, CreateFraneEventArgs e) {
+            Content.Children.Add(e.Frame);
         }
 
         public void AddNavigationButton<T>(string icon, string label) where T : Page =>

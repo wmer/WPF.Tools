@@ -9,6 +9,7 @@ using WPF.Tools.MVVM.Extra;
 namespace WPF.Tools.ControlUsers.Extra {
     internal class CustomResourceDictionary : ResourceDictionary {
         public override void RegisterResources() {
+            Register<MainWindowViewModel>("MainWindow");
             Register<NavigationViewModel>("NavigationView");
         }
     }

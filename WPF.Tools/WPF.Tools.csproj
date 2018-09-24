@@ -55,6 +55,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Behaviors\GlassEffectBehavior.cs" />
+    <Compile Include="ControlUsers\Commands\MainWindowCommand.cs" />
+    <Compile Include="ControlUsers\Commands\NoDistractionsCommand.cs" />
     <Compile Include="ControlUsers\Commands\PageNavigationCommand.cs" />
     <Compile Include="ControlUsers\Events\NoticeEventHub.cs" />
     <Compile Include="ControlUsers\Events\ProcessingEventArgs.cs" />
@@ -66,8 +68,14 @@
     <Compile Include="ControlUsers\NoticeUserControl.xaml.cs">
       <DependentUpon>NoticeUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ControlUsers\ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ControlUsers\ViewModels\NavigationViewModel.cs" />
     <Compile Include="ControlUsers\ViewModels\NoticeViewModel.cs" />
+    <Compile Include="ControlUsers\WindowBarUserControl.xaml.cs">
+      <DependentUpon>WindowBarUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Events\CreateFraneEventArgs.cs" />
+    <Compile Include="Events\WpfToolsEventHub.cs" />
     <Compile Include="Helpers\NonClientRegionAPI.cs" />
     <Compile Include="MVVM\Commands\CommandBase.cs" />
     <Compile Include="MVVM\Commands\DelegateCommand.cs" />
@@ -83,6 +91,15 @@
     <Compile Include="Xaml\ControlsHelper.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Fonts\fa-brands-400.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Fonts\fa-regular-400.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Fonts\fa-solid-900.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +108,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ControlUsers\NoticeUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlUsers\WindowBarUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

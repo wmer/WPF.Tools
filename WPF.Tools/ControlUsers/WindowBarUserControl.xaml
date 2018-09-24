@@ -1,0 +1,146 @@
+﻿<UserControl x:Class="WPF.Tools.ControlUsers.WindowBarUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:local="clr-namespace:WPF.Tools.ControlUsers"
+             xmlns:commands="clr-namespace:WPF.Tools.MVVM.Commands"
+             xmlns:extra="clr-namespace:WPF.Tools.ControlUsers.Extra"
+             xmlns:viewModels="clr-namespace:WPF.Tools.ControlUsers.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             x:Name="WindowBar">
+
+    <UserControl.Resources>
+        <extra:CustomResourceDictionary>
+            <BooleanToVisibilityConverter x:Key="BoolToVis" />
+            <viewModels:NavigationViewModel x:Key="NavigationView" />
+            <viewModels:MainWindowViewModel x:Key="MainWindow" />
+
+            <FontFamily x:Key="FontAwesomeBrands">/Fonts/fa-brands-400.ttf#Font Awesome 5 Brands</FontFamily>
+            <FontFamily x:Key="FontAwesomeRegular">/Fonts/fa-regular-400.ttf#Font Awesome 5 Free</FontFamily>
+            <FontFamily x:Key="FontAwesomeSolid">/Fonts/fa-solid-900.ttf#Font Awesome 5 Free Solid</FontFamily>
+        </extra:CustomResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid 
+            x:Name="TitleBar"
+            Height="40"
+            Visibility="{Binding ShowDistractions, Source={StaticResource NavigationView}, Converter={StaticResource BoolToVis}}"
+            VerticalAlignment="Top"  
+            Background="#10000000">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseLeftButtonDown">
+                    <commands:EventToCommand
+                        Command="{Binding DragWindow, Source={StaticResource MainWindow}}"
+                        CommandParameter="{Binding ElementName=JanelaPrincipal}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <Button                        
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Background="Transparent"
+                Foreground="#FFFFFF"
+                Content="&#xf060;"
+                IsEnabled="True"
+                Width="40"
+                Height="40"
+                BorderThickness="0"
+                FontSize="20"
+                Visibility="{Binding CanGoBack, Source={StaticResource NavigationView}, Converter={StaticResource BoolToVis}}"
+                FontFamily="{StaticResource FontAwesomeSolid}"
+                Command="{Binding GoBack, Source={StaticResource NavigationView}}"/>
+            <Label 
+                Margin="40,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                VerticalContentAlignment="Center"
+                FontSize="20"
+                Width="230"
+                Height="40"
+                Padding="5,0,0,0"
+                BorderThickness="0"
+                Foreground="#FFFFFF"
+                Background="{Binding BackgroundColor, Source={StaticResource NavigationView}}" 
+                Content="{Binding PageTitle, Source={StaticResource MainWindow}}"/>
+            <Grid 
+                Margin="270,0,0,0"
+                VerticalAlignment="Top"
+                Height="40"
+                Background="#000000">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <commands:EventToCommand
+                        Command="{Binding DragWindow, Source={StaticResource MainWindow}}"
+                        CommandParameter="{Binding MainWindow, ElementName=WindowBar}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+
+                <Button        
+                    x:Name="MinimizeWindowButton"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Right"
+                    Background="Transparent"
+                    Foreground="#FFFFFF"
+                    Content="&#xf2d1;"
+                    IsEnabled="True"
+                    Width="40"
+                    Height="40"
+                    BorderThickness="0"
+                    Margin="0,0,126,0"
+                    FontSize="20"
+                    CommandParameter="{Binding MainWindow, ElementName=WindowBar}"
+                    Command="{Binding MinimizeWindow, Source={StaticResource MainWindow}}"
+                    FontFamily="{StaticResource FontAwesomeSolid}"/>
+                <Button             
+                    x:Name="MaximizeWindowButton"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Right"
+                    Background="Transparent"
+                    Foreground="#FFFFFF"
+                    Content="&#xf2d0;"
+                    IsEnabled="True"
+                    Width="40"
+                    Height="40"
+                    Margin="0,0,84,0"
+                    BorderThickness="0"
+                    FontSize="20"
+                    CommandParameter="{Binding MainWindow, ElementName=WindowBar}"
+                    Command="{Binding MaximizeWindow, Source={StaticResource MainWindow}}"
+                    FontFamily="{StaticResource FontAwesomeSolid}"/>
+                <Button             
+                    x:Name="FullScreenWindowButton"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Right"
+                    Background="Transparent"
+                    Foreground="#FFFFFF"
+                    Content="&#xf31e;"
+                    IsEnabled="True"
+                    Width="40"
+                    Height="40"
+                    Margin="0,0,42,0"
+                    BorderThickness="0"
+                    FontSize="20"
+                    CommandParameter="{Binding MainWindow, ElementName=WindowBar}"
+                    Command="{Binding FullScreen, Source={StaticResource MainWindow}}"
+                    FontFamily="{StaticResource FontAwesomeSolid}"/>
+                <Button        
+                    x:Name="CloseWindowButton"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Right"
+                    Background="Transparent"
+                    Foreground="#FFFFFF"
+                    Content="&#xf00d;"
+                    IsEnabled="True"
+                    Width="40"
+                    Height="40"
+                    BorderThickness="0"
+                    FontSize="20"
+                    CommandParameter="{Binding MainWindow, ElementName=WindowBar}"
+                    Command="{Binding CloaseWindow, Source={StaticResource MainWindow}}"
+                    FontFamily="{StaticResource FontAwesomeSolid}"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>
