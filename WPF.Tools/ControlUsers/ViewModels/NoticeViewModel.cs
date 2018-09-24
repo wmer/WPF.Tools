@@ -9,9 +9,11 @@ using WPF.Tools.MVVM.ViewModel;
 namespace WPF.Tools.ControlUsers.ViewModels {
     public class NoticeViewModel : ViewModelBase {
         private bool _visibility;
+        private string _status;
         private string _message;
         private int _total;
         private int _actualValue;
+
 
         public int Total {
             get => _total;
@@ -28,10 +30,18 @@ namespace WPF.Tools.ControlUsers.ViewModels {
         }
 
         public string Message {
-            get => _message;
+            get { return _message; }
             set {
                 _message = value;
                 OnPropertyChanged("Message");
+            }
+        }
+
+        public string Status {
+            get => _status;
+            set {
+                _status = value;
+                OnPropertyChanged("Status");
             }
         }
 
@@ -54,13 +64,15 @@ namespace WPF.Tools.ControlUsers.ViewModels {
         private void OnProcessingStart(object sender, ProcessingEventArgs ev) {
             Task.Run(() => {
                 Visibility = true;
+                Message = ev.Message;
             });
         }
 
         private void OnProcessingProgress(object sender, ProcessingEventArgs ev) {
             Task.Run(() => {
                 Visibility = true;
-                Message = ev.StateMessage;
+                Message = ev.Message;
+                Status = ev.StateMessage;
                 Total = ev.Total;
                 ActualValue = ev.ActualValue;
             });
@@ -75,7 +87,8 @@ namespace WPF.Tools.ControlUsers.ViewModels {
         private void OnProcessingError(object sender, ProcessingEventArgs ev) {
             Task.Run(() => {
                 Visibility = true;
-                Message = ev.StateMessage;
+                Message = ev.Message;
+                Status = ev.StateMessage;
             });
         }
     }

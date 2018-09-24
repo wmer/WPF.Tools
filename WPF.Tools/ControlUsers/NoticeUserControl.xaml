@@ -23,14 +23,14 @@
         </Grid.Effect>
         <TextBox 
             IsReadOnly="True"  
-            Text="Aguarde..." 
-            FontSize="130" 
+            Text="{Binding Message, Source={StaticResource Notification}}" 
+            FontSize="110" 
             Background="{x:Null}" 
             Foreground="White" 
             BorderBrush="{x:Null}"/>
         <TextBox 
             IsReadOnly="True"  
-            Text="{Binding Message, Source={StaticResource Notification}}" 
+            Text="{Binding Status, Source={StaticResource Notification}}" 
             FontSize="20" 
             Background="{x:Null}" 
             Foreground="White" 

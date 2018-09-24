@@ -41,6 +41,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
@@ -52,12 +54,21 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Behaviors\GlassEffectBehavior.cs" />
+    <Compile Include="ControlUsers\Commands\PageNavigationCommand.cs" />
     <Compile Include="ControlUsers\Events\NoticeEventHub.cs" />
     <Compile Include="ControlUsers\Events\ProcessingEventArgs.cs" />
+    <Compile Include="ControlUsers\Extra\CustomResourceDictionary.cs" />
+    <Compile Include="ControlUsers\Models\MenuButton.cs" />
+    <Compile Include="ControlUsers\NavigationUserControl.xaml.cs">
+      <DependentUpon>NavigationUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ControlUsers\NoticeUserControl.xaml.cs">
       <DependentUpon>NoticeUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ControlUsers\ViewModels\NavigationViewModel.cs" />
     <Compile Include="ControlUsers\ViewModels\NoticeViewModel.cs" />
+    <Compile Include="Helpers\NonClientRegionAPI.cs" />
     <Compile Include="MVVM\Commands\CommandBase.cs" />
     <Compile Include="MVVM\Commands\DelegateCommand.cs" />
     <Compile Include="MVVM\Commands\EventToCommand.cs" />
@@ -75,6 +86,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="ControlUsers\NavigationUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ControlUsers\NoticeUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -31,22 +31,47 @@ namespace WPF.Tools.Navigation {
         public void Navigate<T>(string pageTitle) where T : Page => Navigate<T>(pageTitle, null);
 
         public void Navigate<T>(string pageTitle, params object[] extra) where T : Page {
-            var page = default(T);
-            try {
-                if (GetRootFrame().Content != null && GetRootFrame().Content is Page pg) {
-                    _previousPageTitle = _pageTitle;
-                    _previousPage = pg;
-                    _previousExtraContent = _extraContent;
+            Navigate(typeof(T), pageTitle, extra);
+            //var page = default(T);
+            //try {
+            //    if (GetRootFrame().Content != null && GetRootFrame().Content is Page pg) {
+            //        _previousPageTitle = _pageTitle;
+            //        _previousPage = pg;
+            //        _previousExtraContent = _extraContent;
+            //    }
+            //    page = _dependencyInjection.Resolve<T>(InstanceOptions.DiferentInstances);
+            //    NavigationEventHub.OnNavigating(_previousPage, new NavigationEventArgs(pageTitle, page, extra));
+            //    _actualPage = page;
+            //    GetRootFrame().Content = page;
+            //    _extraContent = extra;
+            //    _pageTitle = pageTitle;
+            //    page.Loaded += Page_Loaded;
+            //} catch (Exception e) {
+            //    NavigationEventHub.OnNavigationFailed(page, new NavigationFailedEventArgs(pageTitle, _previousPage, typeof(T), extra, e));
+            //}
+        }
+
+        public void Navigate(Type pageType, string pageTitle, params object[] extra) {
+            Page page = null;
+            if (pageType.IsSubclassOf(typeof(Page))) { 
+                try {
+                    if (GetRootFrame().Content != null && GetRootFrame().Content is Page pg) {
+                        _previousPageTitle = _pageTitle;
+                        _previousPage = pg;
+                        _previousExtraContent = _extraContent;
+                    }
+                    page = _dependencyInjection.Resolve(pageType, InstanceOptions.DiferentInstances) as Page;
+                    NavigationEventHub.OnNavigating(_previousPage, new NavigationEventArgs(pageTitle, page, extra));
+                    _actualPage = page;
+                    GetRootFrame().Content = page;
+                    _extraContent = extra;
+                    _pageTitle = pageTitle;
+                    page.Loaded += Page_Loaded;
+                } catch (Exception e) {
+                    NavigationEventHub.OnNavigationFailed(page, new NavigationFailedEventArgs(pageTitle, _previousPage, pageType, extra, e));
                 }
-                page = _dependencyInjection.Resolve<T>(InstanceOptions.DiferentInstances);
-                NavigationEventHub.OnNavigating(_previousPage, new NavigationEventArgs(pageTitle, page, extra));
-                _actualPage = page;
-                GetRootFrame().Content = page;
-                _extraContent = extra;
-                _pageTitle = pageTitle;
-                page.Loaded += Page_Loaded;
-            } catch (Exception e) {
-                NavigationEventHub.OnNavigationFailed(page, new NavigationFailedEventArgs(pageTitle, _previousPage, typeof(T), extra, e));
+            }else {
+                NavigationEventHub.OnNavigationFailed(page, new NavigationFailedEventArgs(pageTitle, _previousPage, pageType, extra, new Exception("O tipo deve ser uma página")));
             }
         }
 
