@@ -24,20 +24,25 @@ namespace WPF.Tools.ControlUsers {
     public partial class NavigationUserControl : UserControl {
         public NavigationUserControl() {
             InitializeComponent();
-            this.Loaded += NavigationUserControl_Loaded;
             WpfToolsEventHub.CreateFrame += OnCreateFrame;
-        }
-
-        private void NavigationUserControl_Loaded(object sender, RoutedEventArgs e) {
             AddNavigationButton(null, "\uf0c9", "Menu");
         }
 
         private void OnCreateFrame(object sender, CreateFraneEventArgs e) {
-            Content.Children.Add(e.Frame);
+            //Content.Children.Add(e.Frame);
         }
 
         public void AddNavigationButton<T>(string icon, string label) where T : Page =>
                         AddNavigationButton(typeof(T), icon, label);
+
+        public void StarWithPage<T>() where T : Page {
+            var navigationViewModel = Resources["NavigationView"] as NavigationViewModel;
+            foreach (var btn in navigationViewModel.Buttons) {
+                if (btn.Page != null && btn.Page.IsAssignableFrom(typeof(T))) {
+                    navigationViewModel.SelectedButton = btn;
+                }
+            }
+        }
 
         private void AddNavigationButton(Type type, string icon, string label) {
             var navigationViewModel = Resources["NavigationView"] as NavigationViewModel;

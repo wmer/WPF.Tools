@@ -12,14 +12,24 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPF.Tools.ControlUsers.ViewModels;
 
 namespace WPF.Tools.ControlUsers {
     /// <summary>
     /// Interação lógica para WindowBarUserControl.xam
     /// </summary>
     public partial class WindowBarUserControl : UserControl {
+        private MainWindowViewModel _mainWindowViewModel;
         public WindowBarUserControl() {
             InitializeComponent();
+            this.Loaded += OnLoaded;
+        }
+
+        private void OnLoaded(object sender, RoutedEventArgs e) {
+            _mainWindowViewModel = Resources["MainWindow"] as MainWindowViewModel;
+            _mainWindowViewModel.MinimizeWindow.RaiseCanExecuteChanged();
+            _mainWindowViewModel.MaximizeWindow.RaiseCanExecuteChanged();
+            _mainWindowViewModel.CloaseWindow.RaiseCanExecuteChanged();
         }
 
         public static readonly DependencyProperty MainWindowProperty =
@@ -27,7 +37,8 @@ namespace WPF.Tools.ControlUsers {
 
         public Window MainWindow {
             get => (Window)GetValue(MainWindowProperty);
-            set => SetValue(MainWindowProperty, value);
+            set { SetValue(MainWindowProperty, value);
+            }
         }
     }
 }

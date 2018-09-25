@@ -18,7 +18,9 @@
     <Grid>
         <Grid
             x:Name="Content"
-            Margin="{Binding MarginContent, Source={StaticResource NavigationView}}"/>
+            Margin="{Binding MarginContent, Source={StaticResource NavigationView}}">
+            <Frame NavigationUIVisibility="Hidden" />
+        </Grid>
 
         <ListView
             ItemsSource="{Binding Buttons, Source={StaticResource NavigationView}}"

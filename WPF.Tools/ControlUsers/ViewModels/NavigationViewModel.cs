@@ -25,6 +25,8 @@ namespace WPF.Tools.ControlUsers.ViewModels {
         private bool _canGoBack;
         private Brush _backgroundColor;
 
+        private bool _firstNavigation;
+
         public NavigationViewModel() {
             _pageNavigationCommand = new PageNavigationCommand(new NavigationManager(new DependencyInjectionResolver.DependencyInjection()));
             _goBackCommand = new GoBackCommand();
@@ -93,6 +95,10 @@ namespace WPF.Tools.ControlUsers.ViewModels {
             set {
                 _selectedButton = value;
                 OnPropertyChanged("SelectedButton");
+                GoToPage.RaiseCanExecuteChanged();
+                if (!_firstNavigation) {
+                    GoToPage.Execute(this);
+                }
             }
         }
 
@@ -108,6 +114,7 @@ namespace WPF.Tools.ControlUsers.ViewModels {
         public GoBackCommand GoBack { get => _goBackCommand; }
 
         private void OnNavigated(object sender, global::WPF.Tools.Navigation.Events.NavigationEventArgs e) {
+            _firstNavigation = true;
             CanGoBack = NavigationManager.CanGoBack();
             GoBack.RaiseCanExecuteChanged();
         }

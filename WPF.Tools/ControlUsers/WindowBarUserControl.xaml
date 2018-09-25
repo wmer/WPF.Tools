@@ -34,7 +34,7 @@
                 <i:EventTrigger EventName="MouseLeftButtonDown">
                     <commands:EventToCommand
                         Command="{Binding DragWindow, Source={StaticResource MainWindow}}"
-                        CommandParameter="{Binding ElementName=JanelaPrincipal}"/>
+                        CommandParameter="{Binding MainWindow, ElementName=WindowBar}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
             <Button                        
@@ -88,7 +88,7 @@
                     Width="40"
                     Height="40"
                     BorderThickness="0"
-                    Margin="0,0,126,0"
+                    Margin="0,0,86,0"
                     FontSize="20"
                     CommandParameter="{Binding MainWindow, ElementName=WindowBar}"
                     Command="{Binding MinimizeWindow, Source={StaticResource MainWindow}}"
@@ -103,27 +103,11 @@
                     IsEnabled="True"
                     Width="40"
                     Height="40"
-                    Margin="0,0,84,0"
+                    Margin="0,0,44,0"
                     BorderThickness="0"
                     FontSize="20"
                     CommandParameter="{Binding MainWindow, ElementName=WindowBar}"
                     Command="{Binding MaximizeWindow, Source={StaticResource MainWindow}}"
-                    FontFamily="{StaticResource FontAwesomeSolid}"/>
-                <Button             
-                    x:Name="FullScreenWindowButton"
-                    VerticalAlignment="Top"
-                    HorizontalAlignment="Right"
-                    Background="Transparent"
-                    Foreground="#FFFFFF"
-                    Content="&#xf31e;"
-                    IsEnabled="True"
-                    Width="40"
-                    Height="40"
-                    Margin="0,0,42,0"
-                    BorderThickness="0"
-                    FontSize="20"
-                    CommandParameter="{Binding MainWindow, ElementName=WindowBar}"
-                    Command="{Binding FullScreen, Source={StaticResource MainWindow}}"
                     FontFamily="{StaticResource FontAwesomeSolid}"/>
                 <Button        
                     x:Name="CloseWindowButton"
