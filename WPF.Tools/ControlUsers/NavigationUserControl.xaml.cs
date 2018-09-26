@@ -24,12 +24,7 @@ namespace WPF.Tools.ControlUsers {
     public partial class NavigationUserControl : UserControl {
         public NavigationUserControl() {
             InitializeComponent();
-            WpfToolsEventHub.CreateFrame += OnCreateFrame;
             AddNavigationButton(null, "\uf0c9", "Menu");
-        }
-
-        private void OnCreateFrame(object sender, CreateFraneEventArgs e) {
-            //Content.Children.Add(e.Frame);
         }
 
         public void AddNavigationButton<T>(string icon, string label) where T : Page =>

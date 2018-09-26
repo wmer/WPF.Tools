@@ -74,8 +74,6 @@
     <Compile Include="ControlUsers\WindowBarUserControl.xaml.cs">
       <DependentUpon>WindowBarUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Events\CreateFraneEventArgs.cs" />
-    <Compile Include="Events\WpfToolsEventHub.cs" />
     <Compile Include="Helpers\NonClientRegionAPI.cs" />
     <Compile Include="MVVM\Commands\CommandBase.cs" />
     <Compile Include="MVVM\Commands\DelegateCommand.cs" />
