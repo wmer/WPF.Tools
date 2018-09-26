@@ -14,7 +14,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WPF.Tools.ControlUsers.Models;
 using WPF.Tools.ControlUsers.ViewModels;
-using WPF.Tools.Events;
 using WPF.Tools.Xaml;
 
 namespace WPF.Tools.ControlUsers {
