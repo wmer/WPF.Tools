@@ -48,12 +48,10 @@ namespace WPF.Tools.MVVM.Extra {
         }
 
         protected override void OnGettingValue(object key, ref object value, out bool canCache) {
-            try {
+            if (_registredViewModel.ContainsKey($"{key}")) {
+                GetValue($"{key}", ref value, out canCache);
+            } else {
                 base.OnGettingValue(key, ref value, out canCache);
-            } catch (System.Windows.Markup.XamlParseException) {
-                GetValue($"{key}", ref value, out canCache);
-            } catch (Exception) {
-                GetValue($"{key}", ref value, out canCache);
             }
         }
 
