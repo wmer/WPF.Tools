@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DependencyInjectionResolver.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,27 +12,20 @@ using WPF.Tools.Navigation.Events;
 
 namespace WPF.Tools.ControlUsers.ViewModels {
     public class MainWindowViewModel : ViewModelBase {
+        [Inject]
         private DragWindowCommand _dragWindowCommand;
+        [Inject]
         private MinimizeWindowCommand _minimizeWindowCommand;
+        [Inject]
         private MaximizeWindowCommand _maximizeWindowCommand;
+        [Inject]
         private FullScreenCommand _fullScreenCommand;
+        [Inject]
         private CloseWindowCommand _closeWindowCommand;
+        [Inject]
         private NoDistractionsCommand _noDistractionsCommand;
 
-        public MainWindowViewModel(
-                    DragWindowCommand dragWindowCommand,
-                    MinimizeWindowCommand minimizeWindowCommand,
-                    MaximizeWindowCommand maximizeWindowCommand,
-                    FullScreenCommand fullScreenCommand,
-                    CloseWindowCommand closeWindowCommand,
-                    NoDistractionsCommand noDistractionsCommand) {
-            _dragWindowCommand = dragWindowCommand;
-            _minimizeWindowCommand = minimizeWindowCommand;
-            _maximizeWindowCommand = maximizeWindowCommand;
-            _fullScreenCommand = fullScreenCommand;
-            _closeWindowCommand = closeWindowCommand;
-            _noDistractionsCommand = noDistractionsCommand;
-
+        public MainWindowViewModel() {
             NavigationEventHub.Navigated += OnNavigated;
         }
 

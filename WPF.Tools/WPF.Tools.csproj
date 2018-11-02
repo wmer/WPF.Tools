@@ -31,8 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DependencyInjectionResolver, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DependencyInjectionResolver.1.0.4\lib\netstandard2.0\DependencyInjectionResolver.dll</HintPath>
+    <Reference Include="DependencyInjectionResolver, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DependencyInjectionResolver.2.0.0\lib\netstandard2.0\DependencyInjectionResolver.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
