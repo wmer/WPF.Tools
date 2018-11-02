@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Markup;
+using WPF.Tools.MVVM.ViewModel;
 
 namespace WPF.Tools.MVVM.Extra {
     public abstract class ResourceDictionary : System.Windows.ResourceDictionary {
@@ -42,7 +43,7 @@ namespace WPF.Tools.MVVM.Extra {
         public void Register<T>(string key) {
             if (!_registredViewModel.ContainsKey(key)) {
                 _registredViewModel[key] = typeof(T);
-            }else {
+            } else {
                 throw new Exception($"A key {key} já foi usada");
             }
         }
@@ -53,10 +54,19 @@ namespace WPF.Tools.MVVM.Extra {
             } else {
                 base.OnGettingValue(key, ref value, out canCache);
             }
+
+            if (value is ViewModelBase && !_registredViewModel.ContainsKey($"{key}")) {
+                GetValue(ref value, out canCache);
+            }
         }
 
         private void GetValue(string key, ref object value, out bool canCache) {
             value = _injection.Resolve(_registredViewModel[key], InstanceOptions.DiferentInstances);
+            canCache = true;
+        }
+
+        private void GetValue(ref object value, out bool canCache) {
+            value = _injection.Resolve(value.GetType(), InstanceOptions.DiferentInstances);
             canCache = true;
         }
     }
