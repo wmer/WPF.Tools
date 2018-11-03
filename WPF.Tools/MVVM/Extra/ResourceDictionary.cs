@@ -59,7 +59,9 @@ namespace WPF.Tools.MVVM.Extra {
                 base.OnGettingValue(key, ref value, out canCache);
             }
 
-            value.ResolveInjections();
+            if (!_registredViewModel.ContainsKey($"{key}")) {
+                value.ResolveInjections();
+            }
         }
 
         private void GetValue(string key, ref object value, out bool canCache) {
