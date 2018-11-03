@@ -1,11 +1,15 @@
 ﻿using DependencyInjectionResolver;
 using System;
 using System.Collections.Generic;
+using DependencyInjectionResolver.Extensions;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Markup;
 using WPF.Tools.MVVM.ViewModel;
+using WPF.Tools.Xaml;
 
 namespace WPF.Tools.MVVM.Extra {
     public abstract class ResourceDictionary : System.Windows.ResourceDictionary {
@@ -55,9 +59,7 @@ namespace WPF.Tools.MVVM.Extra {
                 base.OnGettingValue(key, ref value, out canCache);
             }
 
-            if (value is ViewModelBase && !_registredViewModel.ContainsKey($"{key}")) {
-                GetValue(ref value, out canCache);
-            }
+            value.ResolveInjections();
         }
 
         private void GetValue(string key, ref object value, out bool canCache) {

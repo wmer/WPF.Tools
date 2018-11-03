@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using DependencyInjectionResolver.Extensions;
 using WPF.Tools.ControlUsers.Commands;
 using WPF.Tools.MVVM.Commands;
 using WPF.Tools.MVVM.ViewModel;

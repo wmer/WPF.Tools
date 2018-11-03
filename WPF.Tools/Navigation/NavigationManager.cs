@@ -100,7 +100,7 @@ namespace WPF.Tools.Navigation {
             return navigated;
         }
 
-        private static Frame GetRootFrame() => 
+        public static Frame GetRootFrame() => 
                         GetMainWindow().Find<Frame>().FirstOrDefault() is Frame rootFrame ? rootFrame : null;
 
         private static Window GetMainWindow() => Application.Current.MainWindow;
